@@ -1,5 +1,19 @@
-require "svg_drawer/version"
+require 'rasem'
 
-module SvgDrawer
-  # Your code goes here...
-end
+require 'svg_drawer/version'
+
+require_relative 'svg_drawer/utils/text'
+require_relative 'svg_drawer/utils/signature'
+require_relative 'svg_drawer/utils/parameter_merger'
+require_relative 'svg_drawer/rasem_wrapper'
+require_relative 'svg_drawer/base'
+require_relative 'svg_drawer/text_box'
+require_relative 'svg_drawer/polyline'
+require_relative 'svg_drawer/multipolyline'
+require_relative 'svg_drawer/line'
+require_relative 'svg_drawer/path'
+require_relative 'svg_drawer/table/cell'
+require_relative 'svg_drawer/table/blank_row'
+require_relative 'svg_drawer/table/row'
+require_relative 'svg_drawer/table/table'
+require_relative 'svg_drawer/table/border'
