@@ -219,7 +219,7 @@ The text itself will be wrapped on multiple lines if the width is restricted (by
 |font          |string        |`'Courier New'`                            |Font name|
 |font_style    |array[string] |`[]`                                       |Valid element values: `'bold'`, `'italic'`|
 |font_weight   |numeric       |`400`                                      |More means _bolder_. Ignored if `font_style` is also given and contains `'bold'`|
-|font_size     |_varies_      |`12`                                       |If given value is numeric, then size is in `pt`. Alternatively, string values such as `'1em'` are also valid|
+|font_size     |_varies_      |`12`                                       |If given value is numeric, then size is in `px`. Alternatively, string values such as `'1em'` or `8pt` are also valid|
 |font_color    |string        |`'black'`                                  ||
 |text_align    |string        |`'left'`                                   |Valid values: `'left'`, `'right'`, `'center'`|
 |text_valign   |string        |`'bottom'`                                 |Valid values: `'top'`, `'bottom'`, `'middle'`|

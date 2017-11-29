@@ -53,7 +53,7 @@ module SvgDrawer
       style[:'font-weight'] = param(:font_style).include?('bold') ? 'bold' : param(:font_weight)
       style[:'font-style'] = 'italic' if param(:font_style).include?('italic')
       style[:'font-size'] = param(:font_size).is_a?(Numeric) ?
-        "#{param(:font_size)}pt" :
+        "#{param(:font_size)}px" :
         param(:font_size)
 
       svg_params = { x: 0, y: 0, style: style }

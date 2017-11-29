@@ -165,7 +165,7 @@ module SvgDrawer
     end
 
     def cap_size
-      param(:size).to_d / 2
+      %w[round square].include?(param(:linecap)) ? param(:size).to_d / 2 : 0
     end
   end
 end
