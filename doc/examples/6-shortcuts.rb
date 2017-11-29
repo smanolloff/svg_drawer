@@ -7,6 +7,6 @@ table.text_row(['foo', 'bar', 'baz'], border: true)
 table.text_row(['qux', 'fred', 'thud'], border: true)
 table.text_row(['wibble', 'wobble', 'wubble'], border: true)
 
-res = Rasem::SVGImage.new(width: 900, height: 1600)
+res = Rasem::SVGImage.new(width: 900, height: 300)
 table.draw(res).translate(10, 10)
 File.write(File.basename(__FILE__, '.rb') + '.svg', res.to_s)

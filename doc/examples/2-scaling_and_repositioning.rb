@@ -1,7 +1,7 @@
 require 'bundler/setup'
 require 'svg_drawer'
 
-res = Rasem::SVGImage.new(width: 700, height: 1600)
+res = Rasem::SVGImage.new(width: 700, height: 1200)
 t = SvgDrawer::Table.new(columns: 3, border: true)
 
 points = [0,0,5,50,10,0,15,50,20,0,25,50]

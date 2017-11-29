@@ -42,6 +42,6 @@ table.row do |row|
   end
 end
 
-res = Rasem::SVGImage.new(width: 900, height: 1600)
+res = Rasem::SVGImage.new(width: 900, height: 300)
 table.draw(res).translate(10, 10)
 File.write(File.basename(__FILE__, '.rb') + '.svg', res.to_s)
