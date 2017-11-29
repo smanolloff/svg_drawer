@@ -18,6 +18,7 @@ A ruby gem to build table-based SVG layouts
   - [Circle](#circle)
   - [Path](#path)
 - [Nesting](#nesting)
+- [Configuration](#configuration)
 - [Useful shorthands](#useful-shorthands)
 - [More examples](#more-examples)
 - [Contributing](#contributing)
@@ -396,6 +397,51 @@ table.row do |row|
   end
 end
 ```
+
+## Configuration
+
+Calling `SvgDrawer.configuration` will return the current fonts configuration in use.
+
+It can be updated with
+
+```ruby
+config = YAML.load_file('svg_drawer.yml')
+SvgDrawer.configuration.update(config)
+```
+
+The configuration file should have the following structure:
+
+```yaml
+Arial:
+  width: 0.63         # (average) width in px of a font letter at font size 1
+  height: 1.3         # (average) height in px of a font letter at font size 1
+  y_offset: 0.23      # how much to "lift" the text
+  wrap_policies:
+    weak: 0.9             # english text with very occasional capitals
+    normal: 1             # randomly mixed small/capital chars
+    aggressive: 1.17      # capital chars
+    max: 1.85             # capital "W" (widest english char in Arial)
+```
+
+Configuring a non-monospace font is extremely tricky, provided that every client renders fonts differently, so it is recommended to use monospace fonts only.
+
+`y_offset` is also calculated experimentally with chrome inspector. It is needed because, as opposed to HTML, in SVG when a text is drawed, all text is _transposed_ down by (1.2 * [font_height]) px. This causes problems when drawing a text box with a border, as chars like `g` or `p` will intersect with the bottom border (and `_` will even be drawn entirely below the border). This is compensated with the y_offset, which seems to be ~0.22
+
+Any value that is not found in the font's config is taken from the default font configuration, which seems good for most monospaced fonts:
+
+```yaml
+default:
+  width: 0.63
+  height: 1.2
+  y_offset: 0.23
+  wrap_policies:
+    weak: 1
+    normal: 1
+    aggressive: 1
+    max: 1
+```
+
+The default configuration file can be found [here](/lib/fonts.yml)
 
 ## Useful shorthands
 
