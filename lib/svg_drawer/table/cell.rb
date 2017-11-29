@@ -18,7 +18,7 @@ module SvgDrawer
 
     def content(element = nil)
       return @content unless element
-      raise TypeError, 'Argument must to respond to #render' unless element.respond_to?(:render)
+      raise TypeError, 'Argument must to respond to #draw' unless element.respond_to?(:draw)
       element.update_params!(inherited: child_params)
       @content = element
     end
@@ -48,17 +48,17 @@ module SvgDrawer
     end
 
     #
-    # See Row#render for info on col_width and row_height
+    # See Row#draw for info on col_width and row_height
     #
     # @param  parent [Rasem::SVGTagWithParent]
     # @param  col_width [Integer]  Table-wide max colum width
     # @param  row_height [Integer]  Table-wide max row height
     # @return  [Rasem::SVGTagWithParent]
     #
-    def _render(parent)
+    def _draw(parent)
       Utils::RasemWrapper.group(parent, class: param(:class), id: param(:id)) do |cell_group|
         draw_border(cell_group)
-        @content.render(cell_group, debug: @debug)
+        @content.draw(cell_group, debug: @debug)
       end
     end
   end

@@ -1,6 +1,6 @@
 module SvgDrawer
   class TextBox < Base
-    defaults font: 'Arial Unicode MS',
+    defaults font: 'Courier New',
              font_style: [],
              font_weight: 400,
              font_size: 12,
@@ -13,8 +13,7 @@ module SvgDrawer
              overflow: false,
              truncate: false,
              truncate_with: '...',
-             text_padding: { top: 0, bottom: 0, left: 0, right: 0 },
-             y_offset: 0.23
+             text_padding: { top: 0, bottom: 0, left: 0, right: 0 }
 
     def initialize(text, params = {})
       super(params)
@@ -45,7 +44,7 @@ module SvgDrawer
 
     private
 
-    def _render(parent)
+    def _draw(parent)
       # need symbol keys due to a bug in Rasem::SVGTag#write_styles
       style = {}
       style[:fill] = param(:font_color)
@@ -101,7 +100,7 @@ module SvgDrawer
     end
 
     def calculate_y_offset_px
-      font_height_px * param(:font_size) * param(:y_offset)
+      font_height_px * param(:font_size) * @config['y_offset']
     end
 
     def lines

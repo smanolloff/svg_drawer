@@ -1,0 +1,405 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.1//EN'
+  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg encoding="UTF-8" height="1286.4" version="1.1" width="384.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect height="100%" style="fill:white;stroke:none;" width="100%" x="0" y="0"/>
+  <g class="emv" id="receipt" transform="scale(1, 1)">
+    <g class="table">
+      <g class="blank_row" transform="translate(0, 0)">
+        <rect height="20" style="fill:none;stroke:none;" width="384" x="0" y="0"/>
+      </g>
+      <g class="row" id="copy_indicator" transform="translate(0, 20)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="text_box">
+            <text font-family="Roboto Mono" font-size="20" font-weight="bold" style="fill:black;" text-anchor="middle" x="192.0" y="18.48">Customer copy</text>
+          </g>
+        </g>
+      </g>
+      <g class="blank_row" transform="translate(0, 44.0)">
+        <rect height="40" style="fill:none;stroke:none;" width="384" x="0" y="0"/>
+      </g>
+      <g class="row" id="business_name" transform="translate(0, 84.0)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="text_box">
+            <text font-family="Roboto Mono" font-size="23" font-weight="bold" style="fill:black;" text-anchor="middle" x="192.0" y="21.252">SumUp</text>
+          </g>
+        </g>
+      </g>
+      <g class="row" transform="translate(0, 111.6)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="table" id="address">
+            <g class="row" transform="translate(0, 0)">
+              <g class="cell" transform="translate(0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="23" font-weight="400" style="fill:black;" text-anchor="middle" x="192.0" y="21.252">1 Line</text>
+                </g>
+              </g>
+            </g>
+            <g class="row" transform="translate(0, 27.6)">
+              <g class="cell" transform="translate(0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="23" font-weight="400" style="fill:black;" text-anchor="middle" x="192.0" y="21.252">Line Two</text>
+                </g>
+              </g>
+            </g>
+            <g class="row" transform="translate(0, 55.2)">
+              <g class="cell" transform="translate(0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="23" font-weight="400" style="fill:black;" text-anchor="middle" x="192.0" y="21.252">GU167HZ dfsdfasd</text>
+                </g>
+              </g>
+            </g>
+            <g class="row" transform="translate(0, 82.8)">
+              <g class="cell" transform="translate(0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="23" font-weight="400" style="fill:black;" text-anchor="middle" x="192.0" y="21.252">United Kingdom</text>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g class="blank_row" transform="translate(0, 222.0)">
+        <rect height="20" style="fill:none;stroke:none;" width="384" x="0" y="0"/>
+      </g>
+      <g class="row" transform="translate(0, 242.0)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="table" id="merchant_code">
+            <g class="row" transform="translate(0, 0)">
+              <g class="cell" transform="translate(0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="20" font-weight="400" style="fill:black;" text-anchor="start" x="0" y="18.48">Merchant ID:</text>
+                </g>
+              </g>
+              <g class="cell" transform="translate(264, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="20" font-weight="400" style="fill:black;" text-anchor="end" x="120.0" y="18.48">MDPZNUQK</text>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g class="row" transform="translate(0, 266.0)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="table" id="transaction_code">
+            <g class="row" transform="translate(0, 0)">
+              <g class="cell" transform="translate(0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="20" font-weight="400" style="fill:black;" text-anchor="start" x="0" y="18.48">Transaction ID:</text>
+                </g>
+              </g>
+              <g class="cell" transform="translate(264, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="20" font-weight="400" style="fill:black;" text-anchor="end" x="120.0" y="18.48">TDP3D9QFTK</text>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g class="row" transform="translate(0, 290.0)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="table" id="terminal_id">
+            <g class="row" transform="translate(0, 0)">
+              <g class="cell" transform="translate(0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="20" font-weight="400" style="fill:black;" text-anchor="start" x="0" y="18.48">Terminal ID:</text>
+                </g>
+              </g>
+              <g class="cell" transform="translate(264, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="20" font-weight="400" style="fill:black;" text-anchor="end" x="120.0" y="18.48">00000618</text>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g class="blank_row" transform="translate(0, 314.0)">
+        <rect height="20" style="fill:none;stroke:none;" width="384" x="0" y="0"/>
+      </g>
+      <g class="row" id="card_application" transform="translate(0, 334.0)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="text_box">
+            <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="start" x="0" y="16.632">AMERICAN EXPRESS</text>
+          </g>
+        </g>
+      </g>
+      <g class="row" id="masked_pan" transform="translate(0, 355.6)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="text_box">
+            <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="start" x="0" y="16.632">**** **** **** 1007</text>
+          </g>
+        </g>
+      </g>
+      <g class="row" transform="translate(0, 377.2)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="text_box">
+            <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="start" x="0" y="16.632">VER 2.0 XP CARD 01</text>
+          </g>
+        </g>
+      </g>
+      <g class="row" id="entry_mode" transform="translate(0, 398.8)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="text_box">
+            <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="start" x="0" y="16.632">Chip read</text>
+          </g>
+        </g>
+      </g>
+      <g class="row" transform="translate(0, 420.4)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="text_box">
+            <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="start" x="0" y="16.632">Exipres: 01/20</text>
+          </g>
+        </g>
+      </g>
+      <g class="blank_row" transform="translate(0, 442.0)">
+        <rect height="20" style="fill:none;stroke:none;" width="384" x="0" y="0"/>
+      </g>
+      <g class="row" id="sale_header" transform="translate(0, 462.0)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="text_box">
+            <text font-family="Roboto Mono" font-size="26" font-weight="400" style="fill:black;" text-anchor="middle" x="192.0" y="24.024">Sale</text>
+          </g>
+        </g>
+      </g>
+      <g class="row" id="sale_timestamp" transform="translate(0, 493.2)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="text_box">
+            <text font-family="Roboto Mono" font-size="20" font-weight="400" style="fill:black;" text-anchor="middle" x="192.0" y="18.48">28-07-2016 10:38</text>
+          </g>
+        </g>
+      </g>
+      <g class="blank_row" transform="translate(0, 517.2)">
+        <rect height="20" style="fill:none;stroke:none;" width="384" x="0" y="0"/>
+      </g>
+      <g class="row" transform="translate(0, 537.2)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="table" id="products_header">
+            <g class="row" transform="translate(0, 0)">
+              <g class="cell" transform="translate(0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="20" font-weight="bold" style="fill:black;" text-anchor="start" x="0" y="18.48">Description</text>
+                </g>
+              </g>
+              <g class="cell" transform="translate(174, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="20" font-weight="bold" style="fill:black;" text-anchor="end" x="100.0" y="18.48">Net</text>
+                </g>
+              </g>
+              <g class="cell" transform="translate(274, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="20" font-weight="bold" style="fill:black;" text-anchor="end" x="110.0" y="18.48">Gross</text>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g class="row" transform="translate(0, 561.2)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="table" id="products">
+            <g class="row" transform="translate(0, 0)">
+              <g class="cell" transform="translate(0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="16" font-weight="400" style="fill:black;" text-anchor="start" x="0" y="14.784">Custom Item</text>
+                </g>
+              </g>
+              <g class="cell" transform="translate(174, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="16" font-weight="400" style="fill:black;" text-anchor="end" x="100.0" y="14.784">1x25.00</text>
+                </g>
+              </g>
+              <g class="cell" transform="translate(274, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="16" font-weight="400" style="fill:black;" text-anchor="end" x="110.0" y="14.784">* 30.00</text>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g class="row" transform="translate(0, 580.4)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="polyline">
+            <polyline points="0,0 384,0" style="stroke:black;fill:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:1, 0;" transform="translate(0, 0)scale(1, 1)"/>
+          </g>
+        </g>
+      </g>
+      <g class="row" transform="translate(0, 580.4)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="table" id="sale_without_tip_amount">
+            <g class="row" transform="translate(0, 0)">
+              <g class="cell" transform="translate(0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="20" font-weight="bold" style="fill:black;" text-anchor="start" x="0" y="18.48">Total</text>
+                </g>
+              </g>
+              <g class="cell" transform="translate(192.0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="20" font-weight="bold" style="fill:black;" text-anchor="end" x="192.0" y="18.48">£30.00</text>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g class="blank_row" transform="translate(0, 604.4)">
+        <rect height="20" style="fill:none;stroke:none;" width="384" x="0" y="0"/>
+      </g>
+      <g class="row" transform="translate(0, 624.4)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="table" id="vats">
+            <g class="row" transform="translate(0, 0)">
+              <g class="cell" transform="translate(0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="end" x="274.0" y="16.632">* incl. 20% VAT</text>
+                </g>
+              </g>
+              <g class="cell" transform="translate(274, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="end" x="110.0" y="16.632">£5.00</text>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g class="blank_row" transform="translate(0, 646.0)">
+        <rect height="20" style="fill:none;stroke:none;" width="384" x="0" y="0"/>
+      </g>
+      <g class="row" id="signature" transform="translate(0, 666.0)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="multi_polyline">
+            <g transform="translate(53.946558704453441256, 29.14979757085020241)scale(0.621862348178137652, 0.621862348178137652)">
+              <g class="polyline">
+                <polyline points="102,171 126,138 152,101 181,63 207,30 228,4 241,-10 245,-15 245,-15 236,4 216,36 199,70 187,98 183,117 183,126 188,128 215,115 254,81 296,43 325,15 339,3 342,1 342,5 316,41 279,93 242,157 203,230" style="stroke:black;fill:none;stroke-width:3.216145833;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:3.216145833, 0;" transform="translate(0, 0)scale(1, 1)"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g class="blank_row" transform="translate(0, 858.0)">
+        <rect height="10" style="fill:none;stroke:none;" width="384" x="0" y="0"/>
+      </g>
+      <g class="row" transform="translate(0, 868.0)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="polyline">
+            <polyline points="0,0 384,0" style="stroke:black;fill:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:1, 5;" transform="translate(38.4, 0)scale(0.8, 0.8)"/>
+          </g>
+        </g>
+      </g>
+      <g class="blank_row" transform="translate(0, 868.0)">
+        <rect height="20" style="fill:none;stroke:none;" width="384" x="0" y="0"/>
+      </g>
+      <g class="row" id="declaration" transform="translate(0, 888.0)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="text_box">
+            <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="middle" x="192.0" y="16.632">I AGREE TO PAY THE ABOVE TOTAL</text>
+            <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="middle" x="192.0" y="38.232">AMOUNT ACCORDING TO THE CARD ISSUER</text>
+            <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="middle" x="192.0" y="59.83199999999999">AGREEMENT</text>
+          </g>
+        </g>
+      </g>
+      <g class="blank_row" transform="translate(0, 952.8)">
+        <rect height="20" style="fill:none;stroke:none;" width="384" x="0" y="0"/>
+      </g>
+      <g class="row" transform="translate(0, 972.8)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="table" id="authorization_mode">
+            <g class="row" transform="translate(0, 0)">
+              <g class="cell" transform="translate(0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="14" font-weight="bold" style="fill:black;" text-anchor="start" x="0" y="12.936">Authorisation mode:</text>
+                </g>
+              </g>
+              <g class="cell" transform="translate(192.0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="14" font-weight="bold" style="fill:black;" text-anchor="end" x="192.0" y="12.936">Issuer</text>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g class="row" transform="translate(0, 989.6)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="table" id="authorization_code">
+            <g class="row" transform="translate(0, 0)">
+              <g class="cell" transform="translate(0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="14" font-weight="bold" style="fill:black;" text-anchor="start" x="0" y="12.936">Authorisation code:</text>
+                </g>
+              </g>
+              <g class="cell" transform="translate(192.0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="14" font-weight="bold" style="fill:black;" text-anchor="end" x="192.0" y="12.936">862439</text>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g class="row" transform="translate(0, 1006.4)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="table" id="emv_data">
+            <g class="row" transform="translate(0, 0)">
+              <g class="cell" transform="translate(0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="14" font-weight="bold" style="fill:black;" text-anchor="start" x="0" y="12.936">EMV data:</text>
+                </g>
+              </g>
+              <g class="cell" transform="translate(192.0, 0)">
+                <g class="text_box">
+                  <text font-family="Roboto Mono" font-size="14" font-weight="bold" style="fill:black;" text-anchor="end" x="192.0" y="12.93599999999999">A000000025010801/0/080</text>
+                  <text font-family="Roboto Mono" font-size="14" font-weight="bold" style="fill:black;" text-anchor="end" x="192.0" y="29.73599999999999">0008000/F800/5E0300///</text>
+                  <text font-family="Roboto Mono" font-size="14" font-weight="bold" style="fill:black;" text-anchor="end" x="192.0" y="46.536">/3030//</text>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g class="blank_row" transform="translate(0, 1056.8)">
+        <rect height="20" style="fill:none;stroke:none;" width="384" x="0" y="0"/>
+      </g>
+      <g class="row" id="reminder" transform="translate(0, 1076.8)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="text_box">
+            <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="middle" x="192.0" y="16.632">PLEASE RETAIN FOR YOUR RECORDS</text>
+          </g>
+        </g>
+      </g>
+      <g class="blank_row" transform="translate(0, 1098.4)">
+        <rect height="20" style="fill:none;stroke:none;" width="384" x="0" y="0"/>
+      </g>
+      <g class="row" id="logo" transform="translate(0, 1118.4)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="path" transform="scale(0.2, 0.2)">
+            <path d="M189.83,0h-149A40.8,40.8,0,0,0,0,40.79v149a40.8,40.8,0,0,0,40.79,40.8h149a40.8,40.8,0,0,0,40.8-40.8v-149A40.79,40.79,0,0,0,189.83,0M80.19,43.19a65.56,65.56,0,0,1,88-4.27,5.42,5.42,0,0,1,0,7.6C155.64,59.1,94.7,120,83.49,131.24a5.47,5.47,0,0,1-7.8-.4,65.53,65.53,0,0,1,4.5-87.65m72.46,139.27a65.53,65.53,0,0,1-87.72,4.46,5.46,5.46,0,0,1-.21-7.87l84.59-84.58a5.41,5.41,0,0,1,7.64.07,65.53,65.53,0,0,1-4.31,87.91"/>
+            <path d="M306.14,138.39c-5.62,0-10.73,4.94-10.73,10.34a10.61,10.61,0,0,0,2,6.15c6.45,9.71,21.08,14.77,32.19,14.77,19,0,39.23-11.93,39.23-34,0-23.09-18.48-30.35-33.33-36.21-11.58-4.56-18.68-7.69-18.68-14.5,0-5.45,4.36-11,14.1-11a17.7,17.7,0,0,1,14.88,7.74c2.41,3.22,5.19,4.87,8.25,4.87a10.69,10.69,0,0,0,10.72-10.37,10.22,10.22,0,0,0-1.65-5.75c-6.41-9.91-19.65-16.8-32.2-16.8-17.3,0-34.79,10.75-34.79,31.26,0,21.12,17.33,27.87,31.25,33.31,11.14,4.33,20.77,8.09,20.77,17.4,0,6.8-6.37,13.71-18.54,13.71-3.72,0-10.69-.86-15.29-6.5-2.45-2.84-5.37-4.43-8.21-4.43"/>
+            <path d="M776.77,53.51h-.59a36.71,36.71,0,0,0-36.65,36.83V133c0,1.23-.12,2.47,0,3.68v81.15a10.23,10.23,0,0,0,20.45,0v-53.1c3.89,3.46,10.37,5.1,16.2,5.1h.59c20.31,0,35.8-17.58,35.8-37.88V89.32c0-20.34-15.49-35.82-35.8-35.82M792.66,133c0,11.13-7.12,15.88-15.89,15.88h-.59c-8.77,0-15.9-4.75-15.9-15.88V90.34a15.89,15.89,0,0,1,15.9-15.88h.59a15.88,15.88,0,0,1,15.89,15.88Z"/>
+            <path d="M718.19,63.4a10.18,10.18,0,0,0-20.35,0h-.06v70.29a15.52,15.52,0,0,1-15.51,15.51h-.58a15.51,15.51,0,0,1-15.53-15.51V64.08c0-.06,0-.14,0-.21s0-.16,0-.22V63.4h0a10.19,10.19,0,0,0-20.35,0h-.08v70.29a36,36,0,0,0,36,36h.58a36,36,0,0,0,36-36V63.4Z"/>
+            <path d="M459.12,63.4a10.19,10.19,0,0,0-20.36,0h-.05v70.29a15.52,15.52,0,0,1-15.54,15.51h-.56a15.51,15.51,0,0,1-15.51-15.51V64.08c0-.06,0-.14,0-.21s0-.16,0-.22V63.4h0a10.19,10.19,0,0,0-20.36,0h-.08v70.29a36,36,0,0,0,36,36h.56a36,36,0,0,0,36-36V63.4Z"/>
+            <path d="M568.87,53.65h-.57a35.88,35.88,0,0,0-25.75,10.9,35.87,35.87,0,0,0-25.71-10.83h-.56a36,36,0,0,0-36,36V160h.05a10.18,10.18,0,0,0,20.35,0h.06V89.69a15.51,15.51,0,0,1,15.52-15.53h.56A15.52,15.52,0,0,1,532.35,89c0,.21,0,.4,0,.6v70.3h.05a10.21,10.21,0,0,0,20.41,0h.07V89.69c0-.24,0-.46,0-.68A15.51,15.51,0,0,1,568.31,74.1h.57A15.52,15.52,0,0,1,584.4,89.62v69.61c0,.07,0,.13,0,.21s0,.14,0,.22v.25h0a10.18,10.18,0,0,0,20.35,0h.09V89.62a36,36,0,0,0-36-36"/>
+            <path d="M859.6,53.59a20.3,20.3,0,1,0,20.29,20.3,20.33,20.33,0,0,0-20.29-20.3m0,35.69A15.36,15.36,0,1,1,875,73.89,15.41,15.41,0,0,1,859.6,89.27"/>
+            <path d="M853.29,66.61a2.1,2.1,0,0,1,2.16-2.16h5.21c3.84,0,6.36,2.35,6.36,5.91a5.18,5.18,0,0,1-4.43,5.33l3.76,4.06a2.64,2.64,0,0,1,.9,1.87,2.13,2.13,0,0,1-2.22,2,2.23,2.23,0,0,1-2-1.06l-5.31-6.71h-.06v5.46a2.17,2.17,0,1,1-4.33,0Zm4.33,6h2.85a2.1,2.1,0,1,0,0-4.2h-2.85Z"/>
+          </g>
+        </g>
+      </g>
+      <g class="row" id="footer" transform="translate(0, 1168.4)">
+        <g class="cell" transform="translate(0, 0)">
+          <g class="text_box">
+            <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="start" x="0" y="16.632">This payment was made with SumUp.</text>
+            <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="start" x="0" y="38.232">Start accepting payments today with</text>
+            <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="start" x="0" y="59.83199999999999">your iPhone / iPad or Android</text>
+            <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="start" x="0" y="81.43199999999999">smartphone / tablet. Visit sumup.</text>
+            <text font-family="Roboto Mono" font-size="18" font-weight="400" style="fill:black;" text-anchor="start" x="0" y="103.032">co.uk for more information.</text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

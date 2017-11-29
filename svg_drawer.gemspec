@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = SvgDrawer::VERSION
   spec.authors       = ['Simeon Manolov']
   spec.email         = ['s.manolloff@gmail.com']
-  spec.summary       = 'A ruby gem to build table-based SVG layouts'
+  spec.summary       = 'A ruby gem for building table-based SVG layouts'
   spec.homepage      = 'https://github.com/smanolloff/svg_drawer'
   spec.license       = 'MIT'
 

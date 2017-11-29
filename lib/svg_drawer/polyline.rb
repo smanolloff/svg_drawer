@@ -69,7 +69,7 @@ module SvgDrawer
 
     private
 
-    def _render(parent)
+    def _draw(parent)
       size = param(:scale_size) ? param(:size) : param(:size) / scale
       dotspace = param(:scale_size) ? param(:dotspace) : param(:dotspace) / scale
       dotsize = size

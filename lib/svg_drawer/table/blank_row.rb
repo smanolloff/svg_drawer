@@ -22,7 +22,7 @@ module SvgDrawer
 
     private
 
-    def _render(parent, _col_widths)
+    def _draw(parent, _col_widths)
       Utils::RasemWrapper.group(parent, class: param(:class), id: param(:id)) do |row_group|
         draw_border(row_group)
         row_group.rectangle(0, 0, width, height, fill: 'none', stroke: 'none')

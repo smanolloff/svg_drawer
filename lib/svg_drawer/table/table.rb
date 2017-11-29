@@ -12,7 +12,7 @@ module SvgDrawer
     #
     def self.col_widths(col_widths, width, columns)
       return if col_widths.nil? && width.nil?
-      sum_width = col_widths.reduce(&:+)
+      sum_width = col_widths.reduce(&:+) if col_widths
 
       if col_widths && width && sum_width != width
         raise ArgumentError, "Sum of given col widths (#{col_widths}) doesn't match total element width (#{width})"
@@ -72,6 +72,10 @@ module SvgDrawer
       row(params) { |r| r.path_cell(path_components) }
     end
 
+    def line_row(points, params = {})
+      row(params) { |r| r.line_cell(points) }
+    end
+
     def polyline_row(points, params = {})
       row(params) { |r| r.polyline_cell(points) }
     end
@@ -80,8 +84,8 @@ module SvgDrawer
       row(params) { |r| r.multipolyline_cell(strokes) }
     end
 
-    def line_row(points, params = {})
-      row(params) { |r| r.line_cell(points) }
+    def circle_row(center, radius, params = {})
+      row(params) { |r| r.circle_cell(center, radius) }
     end
 
     def sub_table_row(params = {})
@@ -112,12 +116,12 @@ module SvgDrawer
     # @param  height_override [Integer]  (optional) container height
     # @return  [Rasem::SVGTagWithParent]
     #
-    def _render(parent)
+    def _draw(parent)
       Utils::RasemWrapper.group(parent, class: param(:class), id: param(:id)) do |table_group|
         draw_border(table_group)
 
         rows.reduce(0) do |y, row|
-          row.render(table_group, max_col_widths, debug: @debug).translate(0, y)
+          row.draw(table_group, max_col_widths, debug: @debug).translate(0, y)
           y + row.height
         end
       end

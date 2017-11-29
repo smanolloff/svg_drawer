@@ -40,7 +40,7 @@ module SvgDrawer
 
     private
 
-    def _render(parent)
+    def _draw(parent)
       unless param(:scale_size)
         @polylines.each { |p| p.update_params!(size: param(:size) / scale) }
       end
@@ -48,7 +48,7 @@ module SvgDrawer
       Utils::RasemWrapper.group(parent, class: 'multi_polyline') do |mpoly_group|
         # Need a sub-group to prevent parents from overwriting translate()
         grouped = Utils::RasemWrapper.group(mpoly_group) do |g|
-          @polylines.each { |p| p.render(g, debug: @debug) }
+          @polylines.each { |p| p.draw(g, debug: @debug) }
         end
 
         grouped.translate(translate_x, translate_y).scale(scale, scale)

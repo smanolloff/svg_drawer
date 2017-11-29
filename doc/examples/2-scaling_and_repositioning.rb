@@ -45,5 +45,5 @@ rows.each do |cells|
   end
 end
 
-t.render(res).translate(10, 10)
+t.draw(res).translate(10, 10)
 File.write(File.basename(__FILE__, '.rb') + '.svg', res.to_s)

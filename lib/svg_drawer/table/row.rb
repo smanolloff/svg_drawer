@@ -66,6 +66,10 @@ module SvgDrawer
       cell(params) { |c| c.path(path_components) }
     end
 
+    def line_cell(points, params = {})
+      cell(params) { |c| c.line(points) }
+    end
+
     def polyline_cell(points, params = {})
       cell(params) { |c| c.polyline(points) }
     end
@@ -74,35 +78,35 @@ module SvgDrawer
       cell(params) { |c| c.multipolyline(strokes) }
     end
 
-    def line_cell(points, params = {})
-      cell(params) { |c| c.line(points) }
+    def circle_cell(center, radius, params = {})
+      cell(params) { |c| c.circle(center, radius) }
     end
 
     private
 
     #
     # A note on cell widths:
-    # Cells are rendered not with their initial widths, but with the
+    # Cells are drawed not with their initial widths, but with the
     # table-wide maximum width for the corresponding columns.
-    # This must happen at render time, as we can't know what the max col
+    # This must happen at draw time, as we can't know what the max col
     # width is until we have added all rows for the entire table.
     #
     # Similarly, for the heights:
-    # Cells are not rendered with their initial heigths, but with the
+    # Cells are not drawed with their initial heigths, but with the
     # row-wide maximum height.
-    # This must happen at render time, as we can't know what the max cell
+    # This must happen at draw time, as we can't know what the max cell
     # height is until we have added all cells for this row.
     #
     # @param  parent [Rasem::SVGTagWithParent]
     # @param  col_widths [Array]  Table-wide max column widths
     # @return  [Rasem::SVGTagWithParent]
     #
-    def _render(parent, max_col_widths)
+    def _draw(parent, max_col_widths)
       Utils::RasemWrapper.group(parent, class: param(:class), id: param(:id)) do |row_group|
         draw_border(row_group, width_override: max_col_widths.reduce(&:+))
 
         cells.zip(max_col_widths).reduce(0) do |x, (cell, col_width)|
-          cell.render(row_group, debug: @debug).translate(x, 0)
+          cell.draw(row_group, debug: @debug).translate(x, 0)
           x + col_width
         end
       end

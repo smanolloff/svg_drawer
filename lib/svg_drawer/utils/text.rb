@@ -43,26 +43,6 @@ module SvgDrawer
           end
         end.delete_if(&:empty?).each(&:strip!)
       end
-
-      # def word_wrap(txt, max_chars, word_delimiter = /\b/)
-      #   words = txt.squish.split(word_delimiter)
-
-      #   words.each_with_object(['']) do |word, lines|
-      #     last = lines.last
-      #     lines << '' if last != '' && last.length + word.length > max_chars
-      #     lines.last << word
-      #   end.each(&:strip!)
-      # end
-
-      # def word_wrap(txt, maxlen, delimiter = ' ')
-      #   words = txt.squish.split(delimiter)
-
-      #   words.each_with_object(['']) do |word, lines|
-      #     last = lines.last
-      #     lines << '' if last != '' && last.length + word.length > maxlen
-      #     lines.last << word
-      #   end.each(&:strip!)
-      # end
     end
   end
 end

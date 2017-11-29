@@ -152,10 +152,10 @@ module SvgDrawer
       param(name) or raise "No default value for: #{name}"
     end
 
-    def render(*args, debug: false)
+    def draw(*args, debug: false)
       ensure_complete!
       @debug = debug
-      _render(*args)
+      _draw(*args)
     end
 
     def ensure_complete!
@@ -181,7 +181,7 @@ module SvgDrawer
 
     private
 
-    def _render(*)
+    def _draw(*)
       raise NotImplementedError
     end
 

@@ -6,7 +6,6 @@ module SvgDrawer
 
     # Retranslate ensures the parent element can correctly draw borders
     defaults scale: [1, 1],
-             rotate: 0,
              overflow: true,      # false not supported
              retranslate: false   # true not supported
 
@@ -32,7 +31,7 @@ module SvgDrawer
 
     private
 
-    def _render(parent)
+    def _draw(parent)
       # No idea how to find boundary coordinates
       raise NotImplementedError if param(:retranslate)
 
