@@ -28,7 +28,7 @@ module SvgDrawer
       # on any char (effectively slicing it at maxlen)
       #
       def word_wrap(txt, maxlen, word_pattern = DEFAULT_WORD_PATTERN)
-        words = txt.squish.scan(word_pattern)
+        words = txt.scan(word_pattern)
 
         words.each_with_object(['']) do |word, lines|
           last = lines.last

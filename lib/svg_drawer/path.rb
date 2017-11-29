@@ -6,6 +6,7 @@ module SvgDrawer
 
     # Retranslate ensures the parent element can correctly draw borders
     defaults scale: [1, 1],
+             rotate: 0,
              overflow: true,      # false not supported
              retranslate: false   # true not supported
 
@@ -35,7 +36,7 @@ module SvgDrawer
       # No idea how to find boundary coordinates
       raise NotImplementedError if param(:retranslate)
 
-      RasemWrapper.group(parent, class: 'path') do |path_group|
+      Utils::RasemWrapper.group(parent, class: 'path') do |path_group|
         @components.each { |path| path_group.path(d: path) }
       end.scale(*param(:scale))
     end

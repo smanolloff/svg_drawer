@@ -43,6 +43,10 @@ module SvgDrawer
       @content = Line.new(points, params.merge(inherited: child_params))
     end
 
+    def circle(center, radius, params = {})
+      @content = Circle.new(center, radius, params.merge(inherited: child_params))
+    end
+
     #
     # See Row#render for info on col_width and row_height
     #
@@ -52,7 +56,7 @@ module SvgDrawer
     # @return  [Rasem::SVGTagWithParent]
     #
     def _render(parent)
-      RasemWrapper.group(parent, class: param(:class), id: param(:id)) do |cell_group|
+      Utils::RasemWrapper.group(parent, class: param(:class), id: param(:id)) do |cell_group|
         draw_border(cell_group)
         @content.render(cell_group)
       end

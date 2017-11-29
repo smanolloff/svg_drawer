@@ -1,37 +1,19 @@
 module SvgDrawer
-  class Polyline < Base
-    # NOTE: reposition and scale behaviors can be moved to Base
-    #       but that is not needed at the moment
-    #
-    # :expand ensures that if the elem is smaller than the given dimensions,
-    # it will be scaled *up* until its either X or Y dim hits the bounds
-    # :shrink is similar, but scales the element *down* until both X and Y
-    # dim fit within the bounds
-    #
-    # If either :expand or :shrink are given, :overflow is ignored
-    #
-    # :scale_size is taken into account only if :shrink and/or :expand are
-    # given, and determines whether the given size (i.e. stroke-width) is
-    # also scaled accordingly
-    #
-    # :dotspace, if given, will cause the line to become dotted
-    #
+  class Circle < Base
     defaults fill: 'none',
              stroke: 'black',
-             linecap: 'butt',
-             linejoin: 'miter',
              size: 1,
              x_reposition: 'none',  # none/left/center/right
              y_reposition: 'none',  # none/top/middle/bottom
              expand: false,
              shrink: false,
-             dotspace: 0,
              overflow: false,
              scale: 1,
              scale_size: true
 
-    def initialize(points, params = {})
-      @points = points
+    def initialize(center, radius, params = {})
+      @center = center
+      @radius = radius
       super(params)
     end
 
@@ -48,48 +30,38 @@ module SvgDrawer
     end
 
     def incomplete
-      @points.size < 4 || @points.size.odd? ? self : nil
+      false
     end
 
     def min_x
-      @min_x ||= @points.each_slice(2).min_by(&:first).first - cap_size
+      @min_x ||= @center.first - @radius
     end
 
     def max_x
-      @max_x ||= @points.each_slice(2).max_by(&:first).first + cap_size
+      @max_x ||= @center.first + @radius
     end
 
     def min_y
-      @min_y ||= @points.each_slice(2).min_by(&:last).last - cap_size
+      @min_y ||= @center.last - @radius
     end
 
     def max_y
-      @max_y ||= @points.each_slice(2).max_by(&:last).last + cap_size
+      @max_y ||= @center.last + @radius
     end
 
     private
 
     def _render(parent)
       size = param(:scale_size) ? param(:size) : param(:size) / scale
-      dotspace = param(:scale_size) ? param(:dotspace) : param(:dotspace) / scale
-      dotsize = size
       style = {}
-
-      if param(:linecap).eql?('round')
-        dotsize = 0
-        dotspace *= 2
-      end
 
       # need symbol keys due to a bug in Rasem::SVGTag#write_styles
       style[:fill] = param(:fill)
       style[:stroke] = param(:stroke)
       style[:'stroke-width'] = size
-      style[:'stroke-linecap'] = param(:linecap)
-      style[:'stroke-linejoin'] = param(:linejoin)
-      style[:'stroke-dasharray'] = "#{dotsize}, #{dotspace}" if dotspace > 0
 
-      Utils::RasemWrapper.group(parent, class: 'polyline') do |polyline_group|
-        poly = polyline_group.polyline(@points, style: style.dup)
+      Utils::RasemWrapper.group(parent, class: 'polyline') do |circle_group|
+        poly = circle_group.circle(@center.first, @center.last, @radius, style: style.dup)
         poly.translate(translate_x, translate_y).scale(scale, scale)
       end
     end
@@ -162,10 +134,6 @@ module SvgDrawer
       when 'none' then 0
       else raise "Bad y_reposition: #{param(:y_reposition)}. Valid are: [top, bottom, middle, none]"
       end
-    end
-
-    def cap_size
-      param(:size).to_d / 2
     end
   end
 end

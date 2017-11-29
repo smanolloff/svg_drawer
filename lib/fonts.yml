@@ -1,0 +1,42 @@
+#
+# Heights and widths calculated experimentally with chrome inspector.
+#
+# y_offset is also calculated experimentally with chrome inspector:
+# As opposed to HTML, in SVG when a text is rendered, all text is
+# *transposed* down by (1.2 * [font_height]) px.
+# This causes problems when rendering a text box with a border, as
+# chars like 'g' or 'p' will intersect with the bottom border (and
+# and '_' char will even be rendered entirely below the border)
+# This is compensated with the y_offset, which seems to be ~0.22
+# (how that value is used can be seen in #calculate_y_offset_px)
+#
+
+default:
+  width: 0.63
+  height: 1.2
+  wrap_policies:
+    weak: 1
+    normal: 1
+    aggressive: 1
+    max: 1
+
+'NK57 Monospace':
+  width: 0.63
+
+'Ubuntu Mono':
+  width: 0.5
+
+'Roboto Mono':
+  width: 0.596
+
+'Courier New':
+  width: 0.8
+
+'Arial':
+  width: 0.63
+  height: 1.3
+  wrap_policies:
+    weak: 0.9             # english text with very occasional capitals
+    normal: 1             # randomly mixed small/capital chars
+    aggressive: 1.17      # capital chars
+    max: 1.85             # capital "W" (widest english char)

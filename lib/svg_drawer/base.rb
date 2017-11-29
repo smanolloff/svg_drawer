@@ -28,7 +28,7 @@ module SvgDrawer
         names_hash = names.map { |n| [n, nil] }.to_h
 
         # this just Hash#reverse_merge! as implemented in activesupport-4.2
-        default_params.merge!(names_hash) { |key, _left, _right| left }
+        default_params.merge!(names_hash) { |_key, left, _right| left }
         special_params.concat(names)
       end
 
@@ -57,7 +57,7 @@ module SvgDrawer
       def default_params
         @default_params ||= {
           id: nil,
-          class: name.demodulize.underscore,
+          class: name.gsub(/.*::/, '').downcase,
           width: nil,
           height: nil,
           border: nil,
@@ -132,7 +132,7 @@ module SvgDrawer
 
     # The way to update an element's params
     def update_params!(params)
-      @params.update(params.deep_dup)
+      @params.update(_deep_dup(params))
       @inherited_params.update(@params.delete(:inherited) || {})
 
       # Note: self.class.default_params is NOT to be merged in @child_params
@@ -188,10 +188,19 @@ module SvgDrawer
       raise NotImplementedError
     end
 
-    def draw_border(svg)
+    def draw_border(svg, width_override: width, height_override: height)
       borders = param(:borders)
       borders ||= %i[left right top bottom] if param(:border)
-      Border.draw(svg, width, height, borders, param(:border_style), param(:class))
+      Border.draw(svg, width_override, height_override, borders, param(:border_style), param(:class))
+    end
+
+    def _deep_dup(value)
+      case value
+      when Array then value.map { |v| _deep_dup(v) }
+      when Hash then value.map { |k, v| [_deep_dup(k), _deep_dup(v)] }.to_h
+      when Fixnum, Float, Symbol, TrueClass, FalseClass then value
+      else value.dup
+      end
     end
   end
 end

@@ -24,7 +24,8 @@ module SvgDrawer
     def width
       ensure_complete!
       sum_width = col_widths ? col_widths.reduce(&:+) : 0
-      max_width = rows.max_by(&:width)
+      max_width = max_col_widths.reduce(&:+)
+
       [sum_width, max_width].max
     end
 
@@ -112,8 +113,7 @@ module SvgDrawer
     # @return  [Rasem::SVGTagWithParent]
     #
     def _render(parent)
-      RasemWrapper.group(parent, class: param(:class), id: param(:id)) do |table_group|
-        max_col_widths = rows.map(&:cell_widths).transpose.map(&:max)
+      Utils::RasemWrapper.group(parent, class: param(:class), id: param(:id)) do |table_group|
         draw_border(table_group)
 
         rows.reduce(0) do |y, row|
@@ -134,6 +134,10 @@ module SvgDrawer
         res = row.incomplete
         break res if res
       end
+    end
+
+    def max_col_widths
+      rows.map(&:cell_widths).transpose.map(&:max)
     end
   end
 end

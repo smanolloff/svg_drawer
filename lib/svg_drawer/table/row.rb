@@ -98,8 +98,8 @@ module SvgDrawer
     # @return  [Rasem::SVGTagWithParent]
     #
     def _render(parent, max_col_widths)
-      RasemWrapper.group(parent, class: param(:class), id: param(:id)) do |row_group|
-        draw_border(row_group)
+      Utils::RasemWrapper.group(parent, class: param(:class), id: param(:id)) do |row_group|
+        draw_border(row_group, width_override: max_col_widths.reduce(&:+))
 
         cells.zip(max_col_widths).reduce(0) do |x, (cell, col_width)|
           cell.render(row_group).translate(x, 0)

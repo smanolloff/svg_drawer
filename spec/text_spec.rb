@@ -1,6 +1,3 @@
-require 'app/lib/utils/text'
-require 'active_support/core_ext/string'
-
 module SvgDrawer::Utils
   describe Text do
     # subject { described_class }

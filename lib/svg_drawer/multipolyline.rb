@@ -45,9 +45,9 @@ module SvgDrawer
         @polylines.each { |p| p.update_params!(size: param(:size) / scale) }
       end
 
-      RasemWrapper.group(parent, class: 'multi_polyline') do |mpoly_group|
+      Utils::RasemWrapper.group(parent, class: 'multi_polyline') do |mpoly_group|
         # Need a sub-group to prevent parents from overwriting translate()
-        grouped = RasemWrapper.group(mpoly_group) { |g| @polylines.each { |p| p.render(g) } }
+        grouped = Utils::RasemWrapper.group(mpoly_group) { |g| @polylines.each { |p| p.render(g) } }
         grouped.translate(translate_x, translate_y).scale(scale, scale)
       end
     end

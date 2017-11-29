@@ -27,7 +27,7 @@ module SvgDrawer
     # @return  [Rasem::SVGTagWithParent]
     #
     def draw(parent, width, height, borders, border_style, svg_class)
-      return if !DEBUG && borders.empty?
+      return if !DEBUG && (borders.nil? || borders.empty?)
 
       style = DEFAULT_STYLE.merge(border_style || {})
       style['stroke-width'] = style.delete(:size)
@@ -43,7 +43,7 @@ module SvgDrawer
       klass = 'border'
       klass.prepend("#{svg_class} ") if svg_class
 
-      RasemWrapper.group(parent, class: klass) do |group|
+      Utils::RasemWrapper.group(parent, class: klass) do |group|
         line_points.each do |border, points|
           line_style = style.dup
 

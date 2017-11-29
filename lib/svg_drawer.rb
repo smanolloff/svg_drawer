@@ -1,19 +1,31 @@
+require 'bigdecimal'
+require 'bigdecimal/util'
 require 'rasem'
+require 'yaml'
+
+module SvgDrawer
+  class << self
+    attr_reader :configuration
+  end
+
+  config_file = File.join(File.dirname(__FILE__), 'fonts.yml')
+  @configuration = YAML.load_file(config_file)
+end
 
 require 'svg_drawer/version'
+require 'svg_drawer/utils/text'
+require 'svg_drawer/utils/parameter_merger'
+require 'svg_drawer/utils/rasem_wrapper'
+require 'svg_drawer/base'
+require 'svg_drawer/text_box'
+require 'svg_drawer/polyline'
+require 'svg_drawer/multipolyline'
+require 'svg_drawer/line'
+require 'svg_drawer/path'
+require 'svg_drawer/circle'
+require 'svg_drawer/table/cell'
+require 'svg_drawer/table/blank_row'
+require 'svg_drawer/table/row'
+require 'svg_drawer/table/table'
+require 'svg_drawer/table/border'
 
-require_relative 'svg_drawer/utils/text'
-require_relative 'svg_drawer/utils/signature'
-require_relative 'svg_drawer/utils/parameter_merger'
-require_relative 'svg_drawer/rasem_wrapper'
-require_relative 'svg_drawer/base'
-require_relative 'svg_drawer/text_box'
-require_relative 'svg_drawer/polyline'
-require_relative 'svg_drawer/multipolyline'
-require_relative 'svg_drawer/line'
-require_relative 'svg_drawer/path'
-require_relative 'svg_drawer/table/cell'
-require_relative 'svg_drawer/table/blank_row'
-require_relative 'svg_drawer/table/row'
-require_relative 'svg_drawer/table/table'
-require_relative 'svg_drawer/table/border'
