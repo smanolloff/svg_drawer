@@ -102,7 +102,7 @@ module SvgDrawer
         draw_border(row_group, width_override: max_col_widths.reduce(&:+))
 
         cells.zip(max_col_widths).reduce(0) do |x, (cell, col_width)|
-          cell.render(row_group).translate(x, 0)
+          cell.render(row_group, debug: @debug).translate(x, 0)
           x + col_width
         end
       end

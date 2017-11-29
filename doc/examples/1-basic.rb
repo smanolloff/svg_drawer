@@ -3,9 +3,10 @@ require 'svg_drawer'
 
 res = Rasem::SVGImage.new(width: 600, height: 600)
 t = SvgDrawer::Table.new(columns: 3)
+border = true
 
 t.row do |row|
-  row.cell(width: 160, height: 160, border: true) do |cell|
+  row.cell(width: 160, height: 160, border: border) do |cell|
     cell.text_box('this is some text', font: 'Courier New',
                                        font_color: 'red',
                                        font_size: 12,
@@ -14,18 +15,18 @@ t.row do |row|
                                        text_valign: 'middle')
   end
 
-  row.cell(width: 160, height: 160, border: true) do |cell|
+  row.cell(width: 160, height: 160, border: border) do |cell|
     cell.line([5,40,140,80], stroke: 'red', size: 6)
   end
 
-  row.cell(width: 160, height: 160, border: true) do |cell|
+  row.cell(width: 160, height: 160, border: border) do |cell|
     cell.circle([80, 80], 30, fill: 'green')
   end
 end
 
 
 t.row do |row|
-  row.cell(width: 160, height: 160, border: true) do |cell|
+  row.cell(width: 160, height: 160, border: border) do |cell|
     cell.polyline([10,10,40,120,150,150,10,150,10,10], fill: 'yellow',
                                                        stroke: 'blue',
                                                        size: 4,
@@ -33,14 +34,14 @@ t.row do |row|
                                                        linecap: 'round')
   end
 
-  row.cell(width: 160, height: 160, border: true) do |cell|
+  row.cell(width: 160, height: 160, border: border) do |cell|
     elem = [20,20,80,40,20,60]
-    points = [elem, elem.map { |x| x + 30 }.shuffle]
+    points = [elem, elem.map { |x| x + 60 }.shuffle]
 
     cell.multipolyline(points, stroke: 'blue', size: 2)
   end
 
-  row.cell(width: 160, height: 160, border: true) do |cell|
+  row.cell(width: 160, height: 160, border: border) do |cell|
     points = [
       'M189.83,0h-149A40.8,40.8,0,0,0,0,40.79v149a40.8,40.8,0,0,0,40.79,'\
       '40.8h149a40.8,40.8,0,0,0,40.8-40.8v-149A40.79,40.79,0,0,0,189.83,'\
@@ -92,5 +93,5 @@ t.row do |row|
   end
 end
 
-t.render(res)
+t.render(res, debug: true)
 File.write(File.basename(__FILE__, '.rb') + '.svg', res.to_s)

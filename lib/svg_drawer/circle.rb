@@ -60,7 +60,7 @@ module SvgDrawer
       style[:stroke] = param(:stroke)
       style[:'stroke-width'] = size
 
-      Utils::RasemWrapper.group(parent, class: 'polyline') do |circle_group|
+      Utils::RasemWrapper.group(parent, class: 'circle') do |circle_group|
         poly = circle_group.circle(@center.first, @center.last, @radius, style: style.dup)
         poly.translate(translate_x, translate_y).scale(scale, scale)
       end

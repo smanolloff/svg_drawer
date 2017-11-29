@@ -117,7 +117,7 @@ module SvgDrawer
         draw_border(table_group)
 
         rows.reduce(0) do |y, row|
-          row.render(table_group, max_col_widths).translate(0, y)
+          row.render(table_group, max_col_widths, debug: @debug).translate(0, y)
           y + row.height
         end
       end

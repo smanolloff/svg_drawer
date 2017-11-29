@@ -2,12 +2,7 @@ module SvgDrawer
   module Border
     module_function
 
-    # Drawing opacity=0 lines helps debugging in web inspector
-    # WARNING: some printers do not support opacity and this will result
-    #          in the line being printed black.
-    #          DON'T ever use in production.
     DEFAULT_STYLE = { stroke: 'black', size: 1 }.freeze
-    DEBUG = false
 
     #
     # Draw a rectangle with the given width and height
@@ -18,16 +13,22 @@ module SvgDrawer
     # All lines share the same style, given by the border_style hash
     # (see DEFAULT_STYLE for possible keys and their default values)
     #
+    # For debugging purposes, lines can always be drawn even when there
+    # are no borders specified -- they are drawn transparent in this case.
+    # Drawing opacity=0 lines helps debugging in web inspector, but has
+    # some performance impact.
+    #
     # @param  parent [Rasem::SVGTagWithParent]
     # @param  width [Integer]
     # @param  height [Integer]
     # @param  borders [Array] (optional)
     # @param  border_style [Hash] (optional)
     # @param  svg_class [String] (optional)
+    # @param  debug [Boolean] (optional) draw invisible borders
     # @return  [Rasem::SVGTagWithParent]
     #
-    def draw(parent, width, height, borders, border_style, svg_class)
-      return if !DEBUG && (borders.nil? || borders.empty?)
+    def draw(parent, width, height, borders, border_style, svg_class, debug)
+      return if !debug && (borders.nil? || borders.empty?)
 
       style = DEFAULT_STYLE.merge(border_style || {})
       style['stroke-width'] = style.delete(:size)
@@ -50,7 +51,7 @@ module SvgDrawer
           # It is useful to draw an invisible border as this
           # significantly helps debugging
           unless borders.include?(border)
-            DEBUG ? line_style[:opacity] = 0 : next
+            debug ? line_style[:opacity] = 0 : next
           end
 
           group.line(*points, line_style)

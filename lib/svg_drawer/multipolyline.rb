@@ -47,7 +47,10 @@ module SvgDrawer
 
       Utils::RasemWrapper.group(parent, class: 'multi_polyline') do |mpoly_group|
         # Need a sub-group to prevent parents from overwriting translate()
-        grouped = Utils::RasemWrapper.group(mpoly_group) { |g| @polylines.each { |p| p.render(g) } }
+        grouped = Utils::RasemWrapper.group(mpoly_group) do |g|
+          @polylines.each { |p| p.render(g, debug: @debug) }
+        end
+
         grouped.translate(translate_x, translate_y).scale(scale, scale)
       end
     end

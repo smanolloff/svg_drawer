@@ -58,7 +58,7 @@ module SvgDrawer
     def _render(parent)
       Utils::RasemWrapper.group(parent, class: param(:class), id: param(:id)) do |cell_group|
         draw_border(cell_group)
-        @content.render(cell_group)
+        @content.render(cell_group, debug: @debug)
       end
     end
   end

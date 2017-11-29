@@ -152,8 +152,9 @@ module SvgDrawer
       param(name) or raise "No default value for: #{name}"
     end
 
-    def render(*args)
+    def render(*args, debug: false)
       ensure_complete!
+      @debug = debug
       _render(*args)
     end
 
@@ -191,7 +192,15 @@ module SvgDrawer
     def draw_border(svg, width_override: width, height_override: height)
       borders = param(:borders)
       borders ||= %i[left right top bottom] if param(:border)
-      Border.draw(svg, width_override, height_override, borders, param(:border_style), param(:class))
+      Border.draw(
+        svg,
+        width_override,
+        height_override,
+        borders,
+        param(:border_style),
+        param(:class),
+        @debug
+      )
     end
 
     def _deep_dup(value)

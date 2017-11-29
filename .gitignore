@@ -3,10 +3,11 @@
 /Gemfile.lock
 /_yardoc/
 /coverage/
-/doc/
 /pkg/
 /spec/reports/
 /tmp/
+TODO
+*.svg
 
 # rspec failure tracking
 .rspec_status
