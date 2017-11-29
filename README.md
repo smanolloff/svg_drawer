@@ -109,7 +109,7 @@ Table                          # Table#rows returns the array of Row objects
         ├── Multipolyline
         ├── Circle
         ├── Path
-        └── Table              # an entirely new table!
+        └── Table              # an entire new table!
 ```
 
 Elements are _created_ with a list of [**params**](#params), some optional, others not.
@@ -440,7 +440,7 @@ Result [here](doc/examples/shortcuts.svg)
 
 See the [examples](doc/examples) directory for moar
 
-A real-world example: At SumUp, we generate SVG receipts which we then PNG before printing [receipt](doc/examples/receipt.png) for a transaction made with SumUp card reader.
+A real-world example: at SumUp, we generate SVG receipts which we then convert to PNG before printing [receipt](doc/examples/receipt.png) for a transaction made with SumUp card reader.
 
 ## Contributing
 
