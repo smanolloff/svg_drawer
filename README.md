@@ -356,7 +356,7 @@ This element expects _two_ arguments to `#initialize`: an array of exactly 2 num
 
 * Create a circle that is scaled down to fit a 100x100 box:
     ```ruby
-    line = SvgDrawer::Circle.new([0, 50], 300], width: 100, height: 100, shrink: true)
+    line = SvgDrawer::Circle.new([0, 50], 300, width: 100, height: 100, shrink: true)
     cell.content(line)
     ```
 
@@ -488,7 +488,7 @@ See the [examples](doc/examples) directory for moar
 
 A real-world example: at SumUp, we generate SVG receipts which we then convert to PNG before printing [receipt](doc/examples/receipt.png) for a transaction made with SumUp card reader.
 
-## Known issues
+## Known limitations
 
 * Text is rendered with different size on different viewers, which causes problems with text wrapping. As opposed to HTML, automatic text wrapping is not possible with SVG, so the text is wrapped manually at generation time, by calculating the its width based on the config values. However, different viewers render text differently, and you might end up with your text looking fine on one viewer and completely wrong on another viewer. 
 * support for path elements is super limited -- you can't scale them up, down, or reposition them.
