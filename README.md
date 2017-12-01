@@ -64,7 +64,7 @@ img.to_s
 
 Different elements (tables, rows, text boxes, etc.) all accept a set of params when initialized. Usually, each element type accepts a different set of params, listed further below
 
-Many of the params are _inherited_ from the parent element (e.g. if a Table is initialized with a `font` param, it won't use it directly, but child elements (rows) will inherit it, their children (cells) will inherit it, their children (text box) will inherit it.)
+Many of the params are _inherited_ from the parent element (e.g. if a Table is initialized with a `font` param, it won't use it directly, but child elements (rows) will inherit it, their children (cells) will inherit it, their children (text box) will inherit it).
 
 Regardless of their type, **all** elements share some common params, which are **never** inherited:
 
@@ -77,13 +77,13 @@ Regardless of their type, **all** elements share some common params, which are *
 
 The `strict` column specifies whether the given param value imposes a hard or a soft requirement when drawing.
 
-For those two params, the value is strict only for `TextBox`, `Line`, `Polyline`, `Circle`, `Multipolyline` and `Path`. Basically any element that contains another element treats its `width` and `height` as a _soft_ requirement.
+For the `width` and `height` params, the value is strict only for `TextBox`, `Line`, `Polyline`, `Circle`, `Multipolyline` and `Path`. Basically any element that contains another element treats its `width` and `height` as a _soft_ requirement.
 
 For example:
 
 A table of 1 row and 2 columns can be given a `width` of 100. In the case of a table, this is a _soft_ requirement, it will only be drawn with that width if the cells themselves can fit within that value.
 
-If each of the cells is also given a `width` (say, `80`), then the total table width of 100 above will be exceeded, as the sum of the cells widths makes a total of 160. In the case of the cell, this is also a _soft_ requirement, as each cell has some content (text box or polyline etc.) that may have its own, different width.
+If each of the cells is also given a `width` (say, `80`), then the total table width of 100 above will be exceeded (to a total of 160). In the case of a cell, this is also a _soft_ requirement, as each cell has some content (text box or polyline etc.) that may have its own, different width.
 
 If the two cells each contain polyline with a `width` of `200` and `300`, respectively, then the cells' width of `80` will be ignored (and the total table width becomes `500`). In the case of a polyline, the `width` is a hard requirement and, when given, the elements up in the hierarchy must respect it, i.e. the cell becomes wider (and eventually the table too)
 
@@ -93,9 +93,9 @@ The below params are shared only by Table, Row and Cell elements and are **never
 
 |name         |type          |default                        |comment |
 |:---         |:---          |:---                           |:---    |
-|borders      |array[string] |`[]`                           |Valid element values: `'top'`, `bottom`, `left`, `right` |
-|border       |boolean       |`false`                        |Equivalent to passing all possible `borders` |
-|border_style |hash          |`{ stroke: 'black', size: 1 }` | All keys are directly mapped to CSS attributes (except for `size`, which is mapped to `stroke-width`) |
+|borders      |array[string] |`[]`                           |Valid element values: `'top'`, `'bottom'`, `'left'`, `'right'` |
+|border       |boolean       |`false`                        |Equivalent to passing all possible values in `borders` |
+|border_style |hash          |`{ stroke: 'black', size: 1 }` |Directly mapped to CSS attributes (except for `size`, which is an alias to `stroke-width`) |
 
 ## Elements
 A high-level overview of the elements:
@@ -113,11 +113,11 @@ Table                          # Table#rows returns the array of Row objects
         └── Table              # an entire new table!
 ```
 
-Elements are _created_ with a list of [**params**](#params), some optional, others not.
+Elements are _created_ with a list of [**params**](#params), some of which are mandatory.
 
 Elements become _complete_ when certain criteria are met, usually different for each element type.
 
-Complete elements can be _drawn_ by calling the `#draw` method with a single argument -- a [`Rasem`](https://github.com/aseldawy/rasem) SVG object. Calling `#draw` on a top-level element is enough, it will draw all its child elements too.
+Complete elements can be _drawn_ by invoking `#draw` with a single argument -- a [`Rasem`](https://github.com/aseldawy/rasem) SVG object. Usually, one needs to call `#draw` only a the top-level element, which will recursively draw all its child elements too.
 
 ### Table
 
@@ -144,7 +144,7 @@ Complete elements can be _drawn_ by calling the `#draw` method with a single arg
     table = SvgDrawer::Table.new(columns: 2)
     ```
 
-* Create a table with 2 columns and a default row height of `100`. Each will still be able to specify its own, different height though:
+* Create a table with 2 columns and a default row height of `100`. Each row will still be able to specify its own, or contain a cell with different height, though:
 
     ```ruby
     table = SvgDrawer::Table.new(columns: 2, row_height: 100)
@@ -162,7 +162,7 @@ Complete elements can be _drawn_ by calling the `#draw` method with a single arg
 
 |name       |type           |default         |strict  |comment |
 |:---       |:---           |:---            |:---    |:---    |
-|col_widths |array[numeric] |`width/columns` |no      |See the [Table](#table) section. Usually inherited from the parent (table)|
+|col_widths |array[numeric] |(width/columns) |no      |See the [Table](#table) section. Usually inherited from the parent (table)|
 
 * **Completeness**: Contains exactly `columns` number of cells.
 
@@ -204,13 +204,13 @@ Complete elements can be _drawn_ by calling the `#draw` method with a single arg
 
 ### TextBox
 
-In contrast to the Table, Row and Cell elements, this element expects an argument to #initialize: the string to draw. Second come the params.
+In contrast to the Table, Row and Cell elements, this element expects an argument to `#initialize`: the string to draw. Second come the params.
 
-Also, the _strict_ column below is omitted, as all params are considered strict (a text box is at the bottom of the element hierarchy and has no children). Exceptions to that rule are explicitly described otherwise.
+Also, the _strict_ column below is omitted, as all params are considered strict (a text box is at the bottom of the element hierarchy and has no children). Exceptions to that rule are explicitly stated otherwise.
 
-It is also always _complete_, as the only requirement is to have a text to draw, but it is a mandatory argument to `initialize` anyway.
+It is also always _complete_, as the only requirement is to have a text to draw, which is a mandatory argument to `initialize` anyway.
 
-The text itself will be wrapped on multiple lines if the width is restricted (by passing the `width` param). The `height` is not strict, because a text can't be vertically restricted -- it either wraps on as many lines as needed (meaning height varies depending on the text length and the given `width`), or is always drawn on a single line (see `overflow` and `truncate` params below)
+The text itself will be wrapped on multiple lines if the width is restricted (by having a fixed `width`, either inherited or set explicitly). The `height` is not strict, because a text can't be vertically restricted -- it either wraps on as many lines as needed, or is always drawn on a single line (there is no `width` restriction, or `overflow` and/or `truncate` params are given)
 
 * **Required params**: (none)
 * **Optional params**:
@@ -219,18 +219,18 @@ The text itself will be wrapped on multiple lines if the width is restricted (by
 |:---          |:---          |:---                                       |:---    |
 |font          |string        |`'Courier New'`                            |Font name|
 |font_style    |array[string] |`[]`                                       |Valid element values: `'bold'`, `'italic'`|
-|font_weight   |numeric       |`400`                                      |More means _bolder_. Ignored if `font_style` is also given and contains `'bold'`|
-|font_size     |_varies_      |`12`                                       |If given value is numeric, then size is in `px`. Alternatively, string values such as `'1em'` or `8pt` are also valid|
+|font_weight   |numeric       |`400`                                      |More means **bolder**. Ignored if `font_style` is also given and contains `'bold'`|
+|font_size     |_varies_      |`12`                                       |If given value is numeric, then size is in `px`. Alternatively, string values such as `'1em'` or `'8pt'` are also valid|
 |font_color    |string        |`'black'`                                  ||
 |text_align    |string        |`'left'`                                   |Valid values: `'left'`, `'right'`, `'center'`|
 |text_valign   |string        |`'bottom'`                                 |Valid values: `'top'`, `'bottom'`, `'middle'`|
 |line_height   |numeric       |`1`                                        |Determines vertical spacing when text is wrapped into multiple lines|
 |wrap_policy   |string        |`'normal'`                                 |Valid values: `'weak'`, `'normal'`, `'aggressive'`, `'max'`. More information in the [Configuration](#configuration) section|
 |word_pattern  |regexp        |(see below)                                |Pattern that will be used to extract words from the text (whatever matches will never be wrapped unless it alone exceeds the total line length)|
-|overflow      |boolean       |`false`                                    |When `true`, wrapping will not occur and all text will be drawn on one line, possibly exceeding the element width|
-|truncate      |boolean       |`false`                                    |Same as `overflow`, but the text will be truncated at the element width|
+|overflow      |boolean       |`false`                                    |When `true`, wrapping will not occur and all text will be drawn on one line, possibly exceeding the element width, but without affecting it. Ignored if there is no width restrictions|
+|truncate      |boolean       |`false`                                    |Same as `overflow`, but the text will be truncated at the element width. Ignored if `overflow` is also true|
 |truncate_with |string        |`'...'`                                    |The string to append to the truncated text|
-|text_padding  |hash          |`{ top: 0, bottom: 0, left: 0, right: 0 }` |Extra spacing for the entire text box|
+|text_padding  |hash          |`{ top: 0, bottom: 0, left: 0, right: 0 }` |Extra spacing at the sides of the text box|
 
 The word pattern is a regexp that tries to match either a word, or a word followed by a single delimiter -- this helps word wrap to avoid moving a `.` at the end of a sentence to a new line. This pattern can surely be improved, but it looks sufficient for now:
 
@@ -244,7 +244,7 @@ Contains exactly `columns` number of cells.
 
 ##### Examples
 
-* Create text box with a fixed width, let it overflow if that width is not enough:
+* Create text box with a fixed width. If the text does not fit on one line with that width, let it overflow without chaning the tabular structure (i.e. _pretend_ that width is `100`):
     ```ruby
     text_box = SvgDrawer::TextBox.new("Lorem ipsum", width: 100, overflow: true)
     cell.content(text_box)
@@ -266,7 +266,7 @@ Similar to the TextBox, this element expects an argument to #initialize: an arra
 |:---          |:---     |:---      |:---    |
 |stroke        | string  |`'black'` |Line color |
 |linecap       | string  |`'butt'`  |Line ending style (see the SVG `stroke-linecap` attribute) |
-|size          | numeric |`1`       |Line size |
+|size          | numeric |`1`       |Line size (or line width) |
 |x_reposition  | string  |`'none'`  |Transpose the line (i.e. if points are [40,20,30,40], a `left` align will change them to [10,20,0,40])|
 |y_reposition  | string  |`'none'`  |Same as x_reposition, but for vertical alignment|
 |expand        | boolean |`false`   |Scale the element up to a fixed width and/or height, maintaining aspect ratio. Ignored if neither `width` nor `height` are also given|
@@ -274,7 +274,7 @@ Similar to the TextBox, this element expects an argument to #initialize: an arra
 |dotspace      | numeric |`0`       |When greater than 0, draw a dotted line instead, the value being the space between the dots|
 |overflow      | boolean |`false`   |Ignore any width and/or height restrictions and draw freely. Ignored if `expand` and/or `shrink` are given|
 |scale         | numeric |`1`       |Manually scale the element. If `shrink` and/or `expand` are also given, apply `scale` after them|
-|scale_size    | boolean |`true`    |When `true`, scaling/expanding/shrinking will also change the size proportionally|
+|scale_size    | boolean |`true`    |When `true`, scaling/expanding/shrinking will also change the line size proportionally|
 
 * **Completeness**: Initialized with exactly two coordinates (star and end point)
 
@@ -296,7 +296,7 @@ Similar to the TextBox, this element expects an argument to #initialize: an arra
 A polyline behaves just like the line, but can be initialized with more than 4 elements in the array.
 
 * **Required params**: (none)
-* **Optional params**: Same as for `Line`, with several more:
+* **Optional params**: Same as for `Line`, with two more:
 
 |name          |type     |default   |comment |
 |:---          |:---     |:---      |:---    |
@@ -316,7 +316,7 @@ A polyline behaves just like the line, but can be initialized with more than 4 e
 
 Same as polyline, but initialized with a 2-dimension array (each array representing a polyline)
 
-This is useful mostly when a combination of polylines needs to be drawn, which all scale proportionally to fit a given container (using separate polylines will cause different scaling factors)
+This is useful mostly when a combination of polylines needs to be drawn, which all scale proportionally, as one, to fit a given container.
 
 Note: one can always use `Multipolyline` instead of a `Polyline`, as it builds on top of it -- in the end, it is a matter of personal taste.
 
@@ -326,14 +326,14 @@ Note: one can always use `Multipolyline` instead of a `Polyline`, as it builds o
 
 ##### Examples
 
-* Create a polyline using the `Cell#polyline` shorthand:
+* Create a multipolylines using the `Cell#multipolyline` shorthand:
     ```ruby
-      cell.polyline([0, 0, 300, 50, 20, 74, 244, 124])
+      cell.multipolyline([0, 0, 300, 50, 20, 74, 244, 124])
     ```
 
 ### Circle
 
-This element expects _two_ arguments to #initialize: an array of exactly 2 numeric values ([x, y]) and a radius. Third come the params.
+This element expects _two_ arguments to `#initialize`: an array of exactly 2 numeric values ([x, y]) and a radius. Third come the params.
 
 * **Optional params**:
 
@@ -350,19 +350,19 @@ This element expects _two_ arguments to #initialize: an array of exactly 2 numer
 |scale         | numeric |`1`       |see [Line](#line)|
 |scale_size    | boolean |`true`    |see [Line](#line)|
 
-* **Completeness**: Initialized with exactly two coordinates (star and end point)
+* **Completeness**: Always
 
 ##### Examples
 
-* Create a line that is scaled down to fit a 100x100 box:
+* Create a circle that is scaled down to fit a 100x100 box:
     ```ruby
-    line = SvgDrawer::Line.new([0, 0, 300, 50], width: 100, height: 100, shrink: true)
+    line = SvgDrawer::Circle.new([0, 50], 300], width: 100, height: 100, shrink: true)
     cell.content(line)
     ```
 
-* Do the same via the convenient `Cell#line` method. It will be shrinked until it fits the cell's boundaries, if any, otherwise it will be drawn full-size:
+* Do the same via the convenient `Cell#circle` method. It will be shrinked until it fits the cell's boundaries, if any, otherwise it will be drawn full-size. Also re-position the circle in the container's center:
     ```ruby
-      cell.line([0, 0, 300, 50], shrink: true)
+      cell.line([0, 0, 300, 50], shrink: true, x_reposition: 'center', y_reposition: 'middle')
     ```
 
 ### Path
@@ -375,7 +375,7 @@ For that reason, `width` and `height` are **required** params, as they can't be 
 
 ##### Examples
 
-Create a path (width and height are needed by the parent element to know how to draw its contents):
+* Create a path (width and height are needed by the parent element to know how to draw its contents):
     ```ruby
     cell.path(['M859.6,53.59a20.3,20.3,0,1,0,20.29,20.3'], width: 8, height: 8)
     ```
@@ -409,7 +409,7 @@ config = YAML.load_file('svg_drawer.yml')
 SvgDrawer.configuration.update(config)
 ```
 
-The configuration file should have the following structure:
+The configuration file has the following structure:
 
 ```yaml
 Arial:
@@ -425,7 +425,7 @@ Arial:
 
 Configuring a non-monospace font is extremely tricky, provided that every client renders fonts differently, so it is recommended to use monospace fonts only.
 
-`y_offset` is also calculated experimentally with chrome inspector. It is needed because, as opposed to HTML, in SVG when a text is drawed, all text is _transposed_ down by (1.2 * [font_height]) px. This causes problems when drawing a text box with a border, as chars like `g` or `p` will intersect with the bottom border (and `_` will even be drawn entirely below the border). This is compensated with the y_offset, which seems to be ~0.22
+`y_offset` is also calculated experimentally with chrome inspector. It is needed because, as opposed to HTML, in SVG, when a text is drawn, it is _transposed_ down by (1.2 * [font_height]) px. This causes problems when drawing a text box with a border, as letters like `g` or `p` will intersect with the bottom border (and `_` will even be drawn entirely below the border). This is compensated with the y_offset, which seems to be ~0.22 and usually does OK for all fonts I have tested so far.
 
 Any value that is not found in the font's config is taken from the default font configuration, which seems good for most monospaced fonts:
 
@@ -487,6 +487,13 @@ Result [here](doc/examples/shortcuts.svg)
 See the [examples](doc/examples) directory for moar
 
 A real-world example: at SumUp, we generate SVG receipts which we then convert to PNG before printing [receipt](doc/examples/receipt.png) for a transaction made with SumUp card reader.
+
+## Known issues
+
+* Text is rendered with different size on different viewers, which causes problems with text wrapping. As opposed to HTML, automatic text wrapping is not possible with SVG, so the text is wrapped manually at generation time, by calculating the its width based on the config values. However, different viewers render text differently, and you might end up with your text looking fine on one viewer and completely wrong on another viewer. 
+* support for path elements is super limited -- you can't scale them up, down, or reposition them.
+* if two cells in a row have different heights, their borders will be drawn at different heights, making the table layout look weird. The table layout is still Ok, though, if you don't draw cell borders at all. It is questionable if that is actually a feature, or a limitation, anyway, maybe in some future version it will can be made configurable.
+* some SVG attributes are not supported (there is no corresponding param for them). This can usually be easily resolved if there is a need for that.
 
 ## Contributing
 
