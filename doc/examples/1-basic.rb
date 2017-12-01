@@ -21,7 +21,7 @@ t.row do |row|
   end
 
   row.cell(width: 160, height: 160, border: border) do |cell|
-    cell.circle([10, 120], 30, fill: 'green', x_reposition: 'center')
+    cell.circle([0,0], 30, fill: 'green', x_reposition: 'center')
   end
 end
 
