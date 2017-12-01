@@ -490,10 +490,10 @@ A real-world example: at SumUp, we generate SVG receipts which we then convert t
 
 ## Known limitations
 
-* Text is rendered with different size on different viewers, which causes problems with text wrapping. As opposed to HTML, automatic text wrapping is not possible with SVG, so the text is wrapped manually at generation time, by calculating the its width based on the config values. However, different viewers render text differently, and you might end up with your text looking fine on one viewer and completely wrong on another viewer. 
+* Text is rendered with different size on different viewers, which causes problems with text wrapping. As opposed to HTML, automatic text wrapping is not possible with SVG, so the text is wrapped manually at generation time, by calculating its width based on the config values for that font. However, different viewers render text differently, and you might end up with your text looking fine on one viewer and completely wrong on another viewer. To be on the safe side, you can work this around by setting an aggressive wrap policy.
 * support for path elements is quite limited -- you can't scale them up, down, or reposition them.
 * if two cells in a row have different heights, their borders will be drawn at different heights, making the table layout look weird. The table layout is still Ok, though, if you don't draw cell borders at all. It is questionable if that is actually a feature, or a limitation, anyway, maybe in some future version it will can be made configurable.
-* some SVG attributes are not supported (there is no corresponding param for them). This can usually be easily resolved if there is a need for that. One exception is the `transpose` transformation, which is hevily used internally and can't be explicitly set for an element. 
+* some SVG attributes are not supported (there is no corresponding param for them). This can usually be easily resolved if there is a need for that. One exception is the `transpose` transformation, which is heavily used behind the curtains and can't really be made configurable at this point. 
 
 ## Contributing
 
