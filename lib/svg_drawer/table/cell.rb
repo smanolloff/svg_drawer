@@ -47,6 +47,10 @@ module SvgDrawer
       @content = Circle.new(center, radius, params.merge(inherited: child_params))
     end
 
+    def image(href, params = {})
+      @content = Image.new(href, params.merge(inherited: child_params))
+    end
+
     #
     # See Row#draw for info on col_width and row_height
     #

@@ -88,6 +88,10 @@ module SvgDrawer
       row(params) { |r| r.circle_cell(center, radius) }
     end
 
+    def image_row(href, params = {})
+      row(params) { |r| r.image_cell(href) }
+    end
+
     def sub_table_row(params = {})
       t = Table.new(params)
       row { |r| r.cell { |c| c.content(t) && yield(t) } }

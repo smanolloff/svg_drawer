@@ -82,6 +82,10 @@ module SvgDrawer
       cell(params) { |c| c.circle(center, radius) }
     end
 
+    def image_cell(href, params = {})
+      cell(params) { |c| c.image(href) }
+    end
+
     private
 
     #
