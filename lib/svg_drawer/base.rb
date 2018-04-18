@@ -207,7 +207,7 @@ module SvgDrawer
       case value
       when Array then value.map { |v| _deep_dup(v) }
       when Hash then value.map { |k, v| [_deep_dup(k), _deep_dup(v)] }.to_h
-      when Fixnum, Float, Symbol, TrueClass, FalseClass then value
+      when Integer, Float, Symbol, TrueClass, FalseClass then value
       else value.dup
       end
     end
