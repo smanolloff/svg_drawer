@@ -9,7 +9,8 @@ module SvgDrawer
              stroke: 'none',
              scale: [1, 1],
              overflow: true,      # false not supported
-             retranslate: false   # true not supported
+             x_reposition: false, # true not supported
+             y_reposition: false  # true not supported
 
     def initialize(path_components, params = {})
       @components = path_components
@@ -35,7 +36,7 @@ module SvgDrawer
 
     def _draw(parent)
       # No idea how to find boundary coordinates
-      raise NotImplementedError if param(:retranslate)
+      raise NotImplementedError if param(:x_reposition) || param(:y_reposition)
 
       style = {}
       style[:fill] = param(:fill)

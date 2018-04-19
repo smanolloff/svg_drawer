@@ -1,13 +1,14 @@
 module SvgDrawer
   class Image < Base
     # Required since there is no known way to calculate them
-    requires :width
-    requires :height
+    requires :img_width   # raw image
+    requires :img_height  # raw image
 
-    # Retranslate ensures the parent element can correctly draw borders
-    defaults scale: [1, 1],
-             overflow: true,
-             retranslate: false   # true not supported
+    # x_reposition and y_reposition take effect only if viewport bounds are
+    # also given
+    defaults scale: 1,
+             x_reposition: false,     # x
+             y_reposition: false      # y
 
     def initialize(href, params = {})
       @href = href
@@ -15,11 +16,19 @@ module SvgDrawer
     end
 
     def width
-      param(:width)
+      @width ||= width_unscaled * param(:scale).to_d
     end
 
     def height
-      param(:height)
+      @height ||= height_unscaled * param(:scale).to_d
+    end
+
+    def width_unscaled
+      @width_unscaled ||= param(:img_width).to_d
+    end
+
+    def height_unscaled
+      @height_unscaled ||= param(:img_height).to_d
     end
 
     def incomplete
@@ -28,18 +37,26 @@ module SvgDrawer
 
     private
 
+    def viewport_width
+      param(:width) || width
+    end
+
+    def viewport_height
+      param(:height) || height
+    end
+
+    # This scale comes from preserveAspectRatio which can't be disabled
+    # (librsvg crashes with OOM when preserveAspectRatio="none")
+    def autoscale
+      [width / param(:img_width), height / param(:img_height)].min
+    end
+
     def _draw(parent)
-      # No idea how to find boundary coordinates
-      raise NotImplementedError if param(:retranslate)
-
       Utils::RasemWrapper.group(parent, class: 'image') do |image_group|
-        w = param(:width) unless param(:overflow)
-        h = param(:height) unless param(:overflow)
-
-        res = image_group.image(nil, nil, w, h, @href)
-        %i[x y width height].each { |k| res.attributes.delete(k) if res.attributes[k].blank? }
-        res
-      end.scale(*param(:scale))
+        x = param(:x_reposition) ? (viewport_width / 2 - width_unscaled * autoscale / 2) / param(:scale) : 0
+        y = param(:y_reposition) ? (viewport_height / 2 - height_unscaled * autoscale / 2) / param(:scale) : 0
+        image_group.image(x, y, width_unscaled, height_unscaled, @href, preserveAspectRatio: 'xMinYMin meet')
+      end.scale(param(:scale), param(:scale))
     end
   end
 end
