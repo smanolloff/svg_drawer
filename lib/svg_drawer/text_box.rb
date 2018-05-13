@@ -8,6 +8,7 @@ module SvgDrawer
              text_align: 'left',
              text_valign: 'bottom',
              line_height: 1,
+             wrap: true,
              wrap_policy: 'normal',
              word_pattern: /[[:word:]]+[^[:word:]]\s?(?![^[:word:]])|[[:word:]]+|[^[:word:]]/,
              overflow: false,
@@ -33,7 +34,7 @@ module SvgDrawer
     def height
       return @height if @height
       ensure_complete!
-      @height = param(:overflow) ?
+      @height = param(:overflow) || !param(:wrap) ?
         param(:height, calculate_height).to_d :
         [param(:height, 0), calculate_height].max.to_d
     end
@@ -104,7 +105,7 @@ module SvgDrawer
     end
 
     def lines
-      return [@text] if param(:overflow)
+      return [@text] if param(:overflow) || !param(:wrap)
       txt = param(:truncate) ?
         Utils::Text.truncate(@text, chars_per_line, param(:truncate_with)) :
         @text
