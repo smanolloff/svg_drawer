@@ -42,12 +42,13 @@ t.row do |row|
     cell.multipolyline(points, stroke: 'blue', size: 2)
   end
 
+  # the path is way off the viewport, can't be drawn
   row.cell(width: 160, height: 160, border: border) do |cell|
     points = [
       'M859.6,53.59a20.3,20.3,0,1,0,20.29,20.3',
     ]
 
-    cell.path(points, scale: [0.18, 0.18])
+    cell.path(points, img_width: 40.6, img_height: 40.6, scale: 1)
   end
 end
 
