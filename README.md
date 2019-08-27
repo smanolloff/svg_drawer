@@ -445,7 +445,7 @@ The default configuration file can be found [here](/lib/fonts.yml)
 
 ## Useful shorthands
 
-As already pointed out, there are methods are not required, but that make it slightly work with SvgDrawer.
+As already pointed out, there are methods are not required, but that make it slightly easier to work with SvgDrawer.
 
 They are:
 
